@@ -1,7 +1,8 @@
 const discord = require ('discord.js');
 var client = new discord.Client();
 
-const token = "insert bot token here";
+
+const token = "NzQ5MjU0ODQwNjI2MDUzMTMw.X0pT8g.ISzt-sJKo8vET6cY5mwKKkFCl-c";
 const tob_emoji = ["749294214222839913", "749294214059262064", "749294214046679151", "749294214155599962", "749294214063325265", "749294214151667823", "749294214097141801", "749294213962793052"];
 const cox_emoji = ["749347575139795045", "749347574946857070", "749347575081205810", "749347575156572241", "749347575076880461", "749347575093526528", "749347574934274130", "749347574703587359", "749347575009771531", "749347574967697459", "749347574963634289", "749347574997319781", "749347574669901937"]
 const nm_emoji = ["749367247008432188", "749367246958100590", "749367246983266346", "749367246983266336", "749367246996111551", "749367246987591700", "749367246991786004", "749367246912225342", "749367247021277204", "749367246593458347"]
@@ -23,12 +24,7 @@ client.on("message", message => {
     const args = message.content.slice(prefix.length).trim().split(' ');
     const command = args.shift().toLowerCase();
 
-    if(command == "image")
-    {
-        message.channel.send(emoji(cox_emoji[2]));
-    }
-
-    else if(command === "kill")
+    if(command === "kill")
     {
         if (!args.length) {
             return message.channel.send(`You didn't provide any arguments, ${message.author}!`);
@@ -106,46 +102,19 @@ client.on("message", message => {
                     cox_rng = 0;
                 }
             }
-            if(arcane > 0){
-                message.channel.send("Arcane Prayer Scroll: " + arcane + " " + emoji(cox_emoji[0]));
-            }
-            if(dex > 0){
-                message.channel.send("Dextereous Prayer Scroll: " + dex + " " + emoji(cox_emoji[1]));
-            }
-            if(anc_hat > 0){
-                message.channel.send("Ancestral Hat: " + anc_hat + " " + emoji(cox_emoji[4]));
-            }
-            if(anc_top > 0){
-                message.channel.send("Ancestral Top: " + anc_top + " " + emoji(cox_emoji[3]));
-            }
-            if(anc_bot > 0){
-                message.channel.send("Ancestral Bottom: " + anc_bot + " " + emoji(cox_emoji[2]));
-            }
-            if(buckler > 0){
-                message.channel.send("Twisted Buckler: " + buckler + " " + emoji(cox_emoji[5]));
-            }
-            if(dhcb > 0){
-                message.channel.send("Dragon Hunter Crossbow: " + dhcb + " " + emoji(cox_emoji[6]));
-            }
-            if(dinhs > 0){
-                message.channel.send("Dinh's Bulwark: " + dinhs + " " + emoji(cox_emoji[7]));
-            }
-            if(dragonclaws > 0){
-                message.channel.send("Dragon Claws: " + dragonclaws + " " + emoji(cox_emoji[8]));
-            }
-            if(eldermaul > 0){
-                message.channel.send("Elder Maul: " + eldermaul + " " + emoji(cox_emoji[9]));
-            }
-            if(kodai > 0){
-                message.channel.send("Kodai Insignia: " + kodai + " " + emoji(cox_emoji[10]));
-            }
-            if(twistedbow > 0){
-                message.channel.send("Twisted Bow: " + twistedbow + " " + emoji(cox_emoji[11]));
-            }
-            if(olmlet > 0){
-                message.channel.send("Olmlet: " + olmlet + " " + emoji(cox_emoji[12]));
-            }
-            return;
+                return message.channel.send(emoji(cox_emoji[0]) + ": " + arcane + "\n" 
+                + emoji(cox_emoji[1]) + ": " + dex + "\n" 
+                + emoji(cox_emoji[4]) + ": " + anc_hat + "\n" 
+                + emoji(cox_emoji[3]) + ": " + anc_top + "\n" 
+                + emoji(cox_emoji[2]) + ": " + anc_bot + "\n" 
+                + emoji(cox_emoji[5]) + ": " + buckler + "\n" 
+                + emoji(cox_emoji[6]) + ": " + dhcb + "\n" 
+                + emoji(cox_emoji[7]) + ": " + dinhs + "\n" 
+                + emoji(cox_emoji[8]) + ": " + dragonclaws + "\n" 
+                + emoji(cox_emoji[9]) + ": " + eldermaul + "\n" 
+                + emoji(cox_emoji[10]) + ": " + kodai + "\n" 
+                + emoji(cox_emoji[11]) + ": " + twistedbow + "\n" 
+                + emoji(cox_emoji[12]) + ": " + olmlet);
             }
             else if(args.length == 2 && args[0] == 'tob'){
                 var scythe_c = 0;
@@ -194,31 +163,14 @@ client.on("message", message => {
                         zik_c = zik_c + 1;
                     }
                 }
-                if(scythe_c > 0){
-                    message.channel.send("Scythe: " + scythe_c + " " + emoji(tob_emoji[1]));
-                }
-                if(rapier_c > 0){
-                    message.channel.send("Rapier: " + rapier_c + " " + emoji(tob_emoji[4]));
-                }
-                if(sang_c > 0){
-                    message.channel.send("Sang: " + sang_c + " " + emoji(tob_emoji[2]));
-                }
-                if(avernic_c > 0){
-                    message.channel.send("Avernic: " + avernic_c + " " + emoji(tob_emoji[3]));   
-                }
-                if(face_c > 0){
-                    message.channel.send("Faceguard: " + face_c + " " + emoji(tob_emoji[7]));
-                }
-                if(chest_c > 0){
-                    message.channel.send("Chestguard: " + chest_c + " " + emoji(tob_emoji[6])); 
-                }
-                if(leg_c > 0){
-                    message.channel.send("Legguards: " + leg_c + " " + emoji(tob_emoji[5]));
-                }
-                if(zik_c > 0){
-                    message.channel.send("Lil' Zik: " + zik_c + " " + emoji(tob_emoji[0]));   
-                }
-                return;
+                return message.channel.send(emoji(tob_emoji[1]) + ": " + scythe_c + "\n" 
+                + emoji(tob_emoji[4]) + ": " + rapier_c + "\n" 
+                + emoji(tob_emoji[2]) + ": " + sang_c + "\n" 
+                + emoji(tob_emoji[3]) + ": " + avernic_c + "\n" 
+                + emoji(tob_emoji[7]) + ": " + face_c + "\n" 
+                + emoji(tob_emoji[6]) + ": " + chest_c + "\n" 
+                + emoji(tob_emoji[5]) + ": " + leg_c + "\n" 
+                + emoji(tob_emoji[0]) + ": " + zik_c + "\n");
             }
             else if(args.length == 2 && args[0] == 'nm'){
                 var inq_mace=0;
@@ -284,39 +236,20 @@ client.on("message", message => {
 
 
                 }
-                if(inq_mace > 0){
-                    message.channel.send("Inquisitor's Mace: " + inq_mace + " " + emoji(nm_emoji[0]));
-                }
-                if(inq_helm > 0){
-                    message.channel.send("Inquisitor's great helm: " + inq_helm + " " + emoji(nm_emoji[1]));
-                }
-                if(inq_hauberk > 0){
-                    message.channel.send("Inquisitor's hauberk: " + inq_hauberk + " " + emoji(nm_emoji[2]));
-                }
-                if(inq_skirt > 0){
-                    message.channel.send("Inquisitor's plateskirt: " + inq_skirt + " " + emoji(nm_emoji[3]));
-                }
-                if(nightmare_staff > 0){
-                    message.channel.send("Nightmare staff: " + nightmare_staff + " " + emoji(nm_emoji[4]));
-                }
-                if(eldritch_orb > 0){
-                    message.channel.send("Eldritch orb: " + eldritch_orb + " " + emoji(nm_emoji[5]));
-                }
-                if(harmonised_orb > 0){
-                    message.channel.send("Harmonised orb: " + harmonised_orb + " " + emoji(nm_emoji[6]));
-                }
-                if(volatile_orb > 0){
-                    message.channel.send("Volatile orb: " + volatile_orb + " " + emoji(nm_emoji[7]));
-                }
-                if(nightmare_pet > 0){
-                    message.channel.send("Little nightmare: " + nightmare_pet + " " + emoji(nm_emoji[8]));
-                }
-                if(nm_jar > 0){
-                    message.channel.send("Jar of dreams: " + nm_jar + " " + emoji(nm_emoji[9]));
+                return message.channel.send(emoji(nm_emoji[0]) + ": " + inq_mace + "\n" 
+                + emoji(nm_emoji[1]) + ": " + inq_helm + "\n" 
+                + emoji(nm_emoji[2]) + ": " + inq_hauberk + "\n" 
+                + emoji(nm_emoji[3]) + ": " + inq_skirt + "\n" 
+                + emoji(nm_emoji[4]) + ": " + nightmare_staff + "\n" 
+                + emoji(nm_emoji[5]) + ": " + eldritch_orb + "\n" 
+                + emoji(nm_emoji[6]) + ": " + harmonised_orb + "\n" 
+                + emoji(nm_emoji[7]) + ": " + volatile_orb + "\n"
+                + emoji(nm_emoji[8]) + ": " + nightmare_pet + "\n"
+                + emoji(nm_emoji[9]) + ": " + nm_jar + "\n");
                 }
             }
         }
-    }
+    
 )
 
 client.login(token);
