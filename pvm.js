@@ -14,9 +14,14 @@ function cox(numsimulated){
     var olmlet = 0;
     var olmlet_rng = 0;
     var j=0;
+    var onyx=0;
     for(j = 0; j < numsimulated; j++)
     {
         var cox_purpleChance = Math.floor(Math.random() * 11);
+        var onyx_chance = Math.floor(Math.random() * 450) + 1;
+        if(onyx_chance == 1){
+            onyx++;
+        }
         if(cox_purpleChance == 1)
         {
             var cox_rng = 0;
@@ -64,7 +69,7 @@ function cox(numsimulated){
             cox_rng = 0;
         }
     }
-    return [arcane, dex, buckler, dhcb, dinhs, anc_bot, anc_top, anc_hat, dragonclaws, kodai, eldermaul, twistedbow, olmlet];
+    return [arcane, dex, buckler, dhcb, dinhs, anc_bot, anc_top, anc_hat, dragonclaws, kodai, eldermaul, twistedbow, onyx, olmlet];
 }
 
 function tob(numsimulated){
@@ -180,9 +185,37 @@ function nightmare(numsimulated){
 
 
     }
-
+    
     return [inq_mace, inq_helm, inq_hauberk, inq_skirt, nightmare_staff, volatile_orb, eldritch_orb, harmonised_orb, nightmare_pet, nm_jar];
 }
   
-  // add the code below
-  module.exports = { cox, tob, nightmare }
+function corp(numsimulated){
+    var spectral=0;
+    var arcane=0;
+    var elysian=0;
+    var pet=0;
+    for(i = 0; i < numsimulated; i++)
+    {
+        var sigilTable = Math.floor(Math.random() * 585) + 1;
+        var petRoll = Math.floor(Math.random() * 5000) + 1;
+        if(sigilTable == 1){
+                var sigilSelect = Math.floor(Math.random() * 7) + 1;
+                if(sigilSelect == 1){
+                    elysian++;
+                }
+                else if (sigilSelect > 1 && sigilSelect < 5){
+                    arcane++;
+                }
+                else if(sigilSelect >= 5  && sigilSelect < 8){
+                    spectral++;
+                }
+        }
+        if(petRoll == 1){
+            pet++;
+        }
+    }
+    return [spectral, arcane, elysian, pet];
+}
+
+
+  module.exports = { cox, tob, nightmare, corp }

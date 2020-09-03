@@ -2,10 +2,11 @@ const discord = require ('discord.js');
 const pvm = require('./pvm');
 var client = new discord.Client();
 
-const token = "insert bot token here";
+const token = "NzQ5MjU0ODQwNjI2MDUzMTMw.X0pT8g.vr_WNr4uBpVU_Epg6ySWBdVYP28";
 const tob_emoji = ["749294214222839913", "749294214059262064", "749294214046679151", "749294214155599962", "749294214063325265", "749294214151667823", "749294214097141801", "749294213962793052"];
-const cox_emoji = ["749347575139795045", "749347574946857070", "749347575081205810", "749347575156572241", "749347575076880461", "749347575093526528", "749347574934274130", "749347574703587359", "749347575009771531", "749347574967697459", "749347574963634289", "749347574997319781", "749347574669901937"]
-const nm_emoji = ["749367247008432188", "749367246958100590", "749367246983266346", "749367246983266336", "749367246996111551", "749367246987591700", "749367246991786004", "749367246912225342", "749367247021277204", "749367246593458347"]
+const cox_emoji = ["749347575139795045", "749347574946857070", "749347575081205810", "749347575156572241", "749347575076880461", "749347575093526528", "749347574934274130", "749347574703587359", "749347575009771531", "749347574967697459", "749347574963634289", "749347574997319781", "751146032968106056", "749347574669901937"];
+const nm_emoji = ["749367247008432188", "749367246958100590", "749367246983266346", "749367246983266336", "749367246996111551", "749367246987591700", "749367246991786004", "749367246912225342", "749367247021277204", "749367246593458347"];
+const corp_emoji = ["751122966686728274", "751122966699311186", "751122966762487922", "751122966816882800"];
 
 client.on("ready", () =>{
     console.log("Bot is ready.");
@@ -34,7 +35,7 @@ client.on("message", message => {
         }
         else if(args[0] == "help")
         {
-            return message.channel.send(`Current supported bosses: tob, cox, nm, ${message.author}!`);
+            return message.channel.send(`**Current supported bosses:** cox, tob, nm, corp, ${message.author}!` + "\n" + "**Format:** .kill boss number");
         }
         else if(args.length == 2 && args[0] == 'cox'){
             var cox_result = pvm.cox(args[1]);
@@ -50,7 +51,8 @@ client.on("message", message => {
                 + emoji(cox_emoji[9]) + ": " + cox_result[10] + "\n" 
                 + emoji(cox_emoji[10]) + ": " + cox_result[9] + "\n" 
                 + emoji(cox_emoji[11]) + ": " + cox_result[11] + "\n" 
-                + emoji(cox_emoji[12]) + ": " + cox_result[12]);
+                + emoji(cox_emoji[12]) + ": " + cox_result[12] + "\n"
+                + emoji(cox_emoji[13]) + ": " + cox_result[13] + "\n");
             }
         else if(args.length == 2 && args[0] == 'tob'){
             var tob_result = pvm.tob(args[1]);
@@ -63,7 +65,7 @@ client.on("message", message => {
                 + emoji(tob_emoji[5]) + ": " + tob_result[5] + "\n" 
                 + emoji(tob_emoji[0]) + ": " + tob_result[7] + "\n");
             }
-            else if(args.length == 2 && args[0] == 'nm'){
+        else if(args.length == 2 && args[0] == 'nm'){
             var nm_result = pvm.nightmare(args[1]);
                 return message.channel.send(emoji(nm_emoji[0]) + ": " + nm_result[0] + "\n" 
                 + emoji(nm_emoji[1]) + ": " + nm_result[1] + "\n" 
@@ -75,9 +77,16 @@ client.on("message", message => {
                 + emoji(nm_emoji[7]) + ": " + nm_result[5] + "\n"
                 + emoji(nm_emoji[8]) + ": " + nm_result[8] + "\n"
                 + emoji(nm_emoji[9]) + ": " + nm_result[9] + "\n");
-                }
+            }
+        else if(args.length == 2 && args[0] == 'corp'){
+                var corp_result = pvm.corp(args[1]);
+                return message.channel.send(emoji(corp_emoji[0]) + ": " + corp_result[0] + "\n"
+                + emoji(corp_emoji[1]) + ": " + corp_result[1] + "\n"
+                + emoji(corp_emoji[2]) + ": " + corp_result[2] + "\n"
+                + emoji(corp_emoji[3]) + ": " + corp_result[3] + "\n");
             }
         }
+    }
     
 )
 
