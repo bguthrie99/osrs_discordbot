@@ -2,11 +2,12 @@ const discord = require ('discord.js');
 const pvm = require('./pvm');
 var client = new discord.Client();
 
-const token = "NzQ5MjU0ODQwNjI2MDUzMTMw.X0pT8g.vr_WNr4uBpVU_Epg6ySWBdVYP28";
+const token = "NzQ5MjU0ODQwNjI2MDUzMTMw.X0pT8g.NXFswAnpE_0B1eCj9CQaXMcuBYA";
 const tob_emoji = ["749294214222839913", "749294214059262064", "749294214046679151", "749294214155599962", "749294214063325265", "749294214151667823", "749294214097141801", "749294213962793052"];
 const cox_emoji = ["749347575139795045", "749347574946857070", "749347575081205810", "749347575156572241", "749347575076880461", "749347575093526528", "749347574934274130", "749347574703587359", "749347575009771531", "749347574967697459", "749347574963634289", "749347574997319781", "751146032968106056", "749347574669901937"];
 const nm_emoji = ["749367247008432188", "749367246958100590", "749367246983266346", "749367246983266336", "749367246996111551", "749367246987591700", "749367246991786004", "749367246912225342", "749367247021277204", "749367246593458347"];
 const corp_emoji = ["751122966686728274", "751122966699311186", "751122966762487922", "751122966816882800"];
+const gauntlet_emoji = ["751157722036043962", "751157722090832073", "751157721788711012", "751157721671139390", "751157721604030485"];
 
 client.on("ready", () =>{
     console.log("Bot is ready.");
@@ -17,7 +18,6 @@ function emoji (id){
     return client.emojis.cache.get(id).toString();
 }
 
-
 const prefix = ".";
 client.on("message", message => {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
@@ -25,17 +25,21 @@ client.on("message", message => {
     const args = message.content.slice(prefix.length).trim().split(' ');
     const command = args.shift().toLowerCase();
 
+    if(command === "commands"){
+        return message.channel.send(`Current commands: kill, ${message.author}!`);
+    }
+
     if(command === "kill")
     {
         if (!args.length) {
-            return message.channel.send(`You didn't provide any arguments, ${message.author}!`);
+            return message.channel.send(`You didn't provide any arguments, ${message.author}! Type .kill help for more info.`);
         }
         else if(args.length == 1 && args[0] != "help"){
             return message.channel.send(`You must specify the boss then amount, ${message.author}!`);
         }
         else if(args[0] == "help")
         {
-            return message.channel.send(`**Current supported bosses:** cox, tob, nm, corp, ${message.author}!` + "\n" + "**Format:** .kill boss number");
+            return message.channel.send(`**Current supported bosses:** cox, tob, nm, corp, gauntlet ${message.author}!` + "\n" + "**Format:** .kill boss number");
         }
         else if(args.length == 2 && args[0] == 'cox'){
             var cox_result = pvm.cox(args[1]);
@@ -85,6 +89,14 @@ client.on("message", message => {
                 + emoji(corp_emoji[2]) + ": " + corp_result[2] + "\n"
                 + emoji(corp_emoji[3]) + ": " + corp_result[3] + "\n");
             }
+        else if(args.length == 2 && args[0] == 'gauntlet'){
+            var gauntlet_result = pvm.gauntlet(args[1]);
+            return message.channel.send(emoji(gauntlet_emoji[0]) + ": " + gauntlet_result[0] + "\n"
+            + emoji(gauntlet_emoji[1]) + ": " + gauntlet_result[1] + "\n"
+            + emoji(gauntlet_emoji[2]) + ": " + gauntlet_result[2] + "\n"
+            + emoji(gauntlet_emoji[3]) + ": " + gauntlet_result[3] + "\n"
+            + emoji(gauntlet_emoji[4]) + ": " + gauntlet_result[4] + "\n");
+        }
         }
     }
     

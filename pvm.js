@@ -1,3 +1,4 @@
+
 function cox(numsimulated){
     var arcane = 0;
     var dex = 0;
@@ -217,5 +218,31 @@ function corp(numsimulated){
     return [spectral, arcane, elysian, pet];
 }
 
+function gauntlet(numsimulated){
+    var crystalShard=0;
+    var crystalWepSeed=0;
+    var crystalArmorSeed=0;
+    var blade=0;
+    var pet=0;
+    for(i=0 ; i < numsimulated; i++){
+        var petRoll = Math.floor(Math.random() * 2000) + 1;
+        if(petRoll == 1){
+            pet++;
+        }
+        var uniqueRoll = Math.floor(Math.random() * 2000) + 1;
+        if(uniqueRoll == 1){
+            blade++;
+        }
+        else if(uniqueRoll >= 2 && uniqueRoll < 18){
+            crystalWepSeed++;
+        }
+        else if(uniqueRoll >= 18 && uniqueRoll < 34){
+            crystalArmorSeed++;
+        }
+        crystalShard += Math.floor(Math.random() * 7) + 1;
+    }
+    return [crystalShard, crystalWepSeed, crystalArmorSeed, blade, pet];
+}
 
-  module.exports = { cox, tob, nightmare, corp }
+
+  module.exports = { cox, tob, nightmare, corp, gauntlet }
