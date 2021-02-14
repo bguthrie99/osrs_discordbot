@@ -5,9 +5,7 @@ Bossing/high-level PvM (player versus monster) is a huge part of the game, where
 
 This Discord bot allows for simulations of these dungeons to see what items the player would get had they completed them, including icons of the loot they have received. Current supported bosses are Chambers of Xeric, Theatre of Blood, Nightmare, Corporeal Beast, and Gauntlet.
 
-Command format is with the . identifier, so example commands are:
-
-.help
+Command format is with the . identifier, so an example command is:
 
 .kill X 1000
 
