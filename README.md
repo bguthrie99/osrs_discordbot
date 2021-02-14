@@ -8,6 +8,7 @@ This Discord bot allows for simulations of these dungeons to see what items the 
 Command format is with the . identifier, so example commands are:
 
 .help
+
 .kill X 1000
 
 Where X is the boss name (cox, tob, nm, corp, gauntlet)
